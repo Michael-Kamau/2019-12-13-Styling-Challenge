@@ -1,0 +1,611 @@
+//@charset 'utf-8';
+
+@import 'settings';
+@import '../node_modules/foundation-sites/scss/foundation';
+@import '../node_modules/motion-ui/src/motion-ui';
+@import '../node_modules/foundation-sites/scss/util/util';
+
+// Global styles
+@include foundation-global-styles;
+@include foundation-forms;
+@include foundation-typography;
+
+// Grids (choose one)
+@include foundation-xy-grid-classes;
+// @include foundation-grid;
+// @include foundation-flex-grid;
+
+// Generic components
+@include foundation-button;
+@include foundation-button-group;
+@include foundation-close-button;
+@include foundation-label;
+@include foundation-progress-bar;
+@include foundation-slider;
+@include foundation-switch;
+@include foundation-table;
+// Basic components
+@include foundation-badge;
+@include foundation-breadcrumbs;
+@include foundation-callout;
+@include foundation-card;
+@include foundation-dropdown;
+@include foundation-pagination;
+@include foundation-tooltip;
+
+// Containers
+@include foundation-accordion;
+@include foundation-media-object;
+@include foundation-orbit;
+@include foundation-responsive-embed;
+@include foundation-tabs;
+@include foundation-thumbnail;
+// Menu-based containers
+@include foundation-menu;
+@include foundation-menu-icon;
+@include foundation-accordion-menu;
+@include foundation-drilldown-menu;
+@include foundation-dropdown-menu;
+
+// Layout components
+@include foundation-off-canvas;
+@include foundation-reveal;
+@include foundation-sticky;
+@include foundation-title-bar;
+@include foundation-top-bar;
+
+// Helpers
+@include foundation-float-classes;
+@include foundation-flex-classes;
+@include foundation-visibility-classes;
+// @include foundation-prototype-classes;
+
+// Motion UI
+@include motion-ui-transitions;
+
+@include motion-ui-animations;
+
+@mixin myTextGradient{
+  background: -webkit-linear-gradient(#fda033, #b0487f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 45px;
+  font-weight: 300;
+}
+
+
+@mixin boxStyle{
+  position: relative;
+  display: inline-block; /* Make the width of box same as image */
+  min-height: 230px;
+  border-radius: 8px;
+  color: white;
+  margin:5px auto;
+
+  .text{
+    position: absolute;
+    z-index: 999;
+    margin: 0 0 0 20px;
+    left: 0;
+    right: 0;
+    text-align: left;
+    top: 10%; /* Adjust this value to move the positioned div up and down */
+    font-family: Arial,sans-serif;
+    color: #fff;
+    width: 50%; /* Set the width of the positioned div */
+    font-size: 15px;
+
+    h6{
+      color: white;
+      font-size: 0.9em;
+      font-weight: bold;
+    }
+
+    h5{
+      font-size: 1em;
+      font-weight: bolder;
+    }
+
+    p{
+      font-size: 1em;
+      font-weight: lighter;
+      color: rgba(255, 255, 255, 0.87);
+    }
+
+  }
+
+  .text-bottom{
+    position: absolute;
+    z-index: 999;
+    margin: 0 0 0 20px;
+    left: 0;
+    right: 0;
+    text-align: left;
+    top: 80%; /* Adjust this value to move the positioned div up and down */
+    font-family: Arial,sans-serif;
+    color: #fff;
+    width: 50%; /* Set the width of the positioned div */
+  }
+}
+
+@mixin myGradient {
+  background-image: linear-gradient(to right, #fda033, #b0487f); /* Standard syntax (must be last) */
+
+}
+
+
+.menu, .menu.horizontal {
+  padding: 5px;
+  background-color: #0000008c;
+  width: 90%;
+  margin-left:5%;
+  color: white;
+  position: fixed;
+
+  a{
+    font-size: 10px;
+    font-weight: bolder;
+    color: white;
+  }
+
+  .logo-image{
+    width: 150px;
+    height: 46px;
+    border-radius: 5%;
+    overflow: hidden;
+    margin-top: -6px;
+    opacity: 0.8;
+  }
+}
+
+
+
+
+.main{
+  font-family: 'proxima-nova',proxima-nova;
+
+  .auto-margin{
+    margin:auto;
+  }
+
+  .extend{
+    font-size: 30px;
+  }
+
+
+  &__deals{
+    min-height: 90%;
+    width: 100%;
+    padding:70px 0px 40px 0px;
+    background:
+            /* top, transparent red */
+            linear-gradient(to right,
+                    rgba(0, 0, 0, 0.95),
+                    rgba(0, 0, 0, 0.5)
+            ),
+              /* bottom, image */
+            url(../images/ralph-kayden-JDBVXignFdA-unsplash.jpg);
+    background-size: cover;
+    color: #f1f1f1;
+    line-height: 0.8;
+
+    h3{
+      @include myTextGradient;
+      line-height: 1;
+    }
+
+    h5{
+      line-height: 1;
+      font-size: 20px;
+      padding: 5px 0px 10px 5px;
+    }
+
+
+    .button{
+      margin-top: 0px;
+      padding: 15px 40px;
+      border-radius: 8px;
+      @include myGradient;
+    }
+
+    .content{
+      margin: 140px auto 140px auto ;
+      padding: 20px 10px;
+    }
+
+    &__search{
+      //margin: auto;
+
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 15px;
+        overflow: hidden;
+        background-color: #333;
+        border-radius: 5px;
+        @include myGradient;
+        opacity: 0.9;
+        float: left;
+      }
+
+      li {
+        float: left;
+
+        a {
+          display: block;
+          color: rgba(255, 255, 255, 0.79);
+          text-align: center;
+          padding: 15px 4px;
+          text-decoration: none;
+          margin: 5px 15px 5px 15px ;
+          font-size: 13px;
+
+        }
+
+        a:hover:not(.active) {
+          background-color: #111;
+        }
+
+        .active {
+          background-color: #4CAF50;
+        }
+
+        .bg-faint{
+          background-color: rgba(17, 17, 17, 0.28);
+          padding: 10px 70px 10px 15px;
+        }
+      }
+
+    }
+
+  }
+
+  &__experience{
+    padding: 100px 0px;
+    background:
+            /* top, transparent red */
+            linear-gradient(
+                            rgba(0, 0, 0, 0.85),
+                            rgba(0, 0, 0, 0.85)
+            ),
+              /* bottom, image */
+            url(../images/9.jpg);
+    background-size: cover;
+
+    .section{
+      margin:auto;
+      color: #cacaca;
+
+      h3{
+        @include myTextGradient;
+        margin:10px 0px 0px 0px;
+      }
+
+      h5{
+        font-size: 15px;
+      }
+
+      p{
+        color: #e0e0e0;
+      }
+
+
+      .images{
+        overflow: hidden;
+        img{
+          height: 200px;
+          width: 100%;
+          padding: 5px;
+        }
+
+
+      }
+    }
+
+  }
+
+  &__explore{
+    background-color: #0a0a0a;
+    color: #9d9d9d;
+    padding: 50px 0px 120px 0px;
+
+    .section{
+      margin:auto;
+
+      h3{
+        @include myTextGradient;
+      }
+      h5{
+        color: #cecece;
+        font-size: 16px;
+      }
+
+
+
+      .image{
+        padding: 10px;
+        overflow: hidden;
+
+        img{
+          height: 320px;
+          width: 100%;
+          //background-size: cover;
+
+        }
+
+        h6{
+          color: #f3f3f3;
+          font-size: 12px;
+          font-weight: bold;
+          margin:5px;
+          font-weight: bold;
+        }
+
+
+        .fas{
+          font-size: 7px;
+        }
+      }
+
+    }
+
+
+
+
+  }
+
+  &__packages{
+    background-color: #f9f9f9;
+    .section{
+      padding:30px 0px;
+      margin: auto;
+      h3{
+        @include myTextGradient;
+      }
+
+      h5{
+        color: #333333;
+        font-size: 20px;
+        font-weight: lighter;
+      }
+
+      .float-right{
+        color: #d0d0d0;
+        font-weight: bold;
+        font-size: 15px;
+      }
+
+
+      .images{
+        margin: auto;
+        .image{
+          //overflow: hidden;
+          border-radius: 15px;
+          //margin: 15px 15px 15px 15px;
+          margin-left: auto;
+          margin-top: 15px;
+
+          img{
+
+            width: 100%;
+            height: 100%;
+            //border-radius: 15px;
+          }
+
+        }
+      }
+
+    }
+
+  }
+
+  &__dream{
+
+    background-color: #ffffff;
+    padding: 50px 0px 30px 0px;
+
+
+    .section{
+      padding: 62px 0px;
+      border-radius: 15px;
+      color: white;
+      margin: 0px auto 0px auto;
+      background:
+              /* top, transparent red */
+              linear-gradient(
+                              rgba(0, 0, 0, 0.65),
+                              rgba(0, 0, 0, 0.65)
+              ),
+                /* bottom, image */
+              url(../images/ralph-kayden-JDBVXignFdA-unsplash.jpg);
+      background-size: cover;
+
+      h3{
+        font-size: 40px;
+        font-weight: 300;
+        font-style: normal;
+      }
+      h5{
+        font-size: 15px;
+      }
+
+      .button{
+
+        margin-top: 20px;
+        padding: 15px 40px;
+        border-radius: 8px;
+        font-size: 15px;
+        @include myGradient;
+      }
+
+      .fas{
+        padding-left: 10px;
+      }
+    }
+  }
+
+  &__articles{
+    padding: 20px 20px 100px 20px;
+    .section{
+      margin:auto;
+
+      h3{
+        @include myTextGradient;
+      }
+
+      h6{
+        color: rgba(54, 54, 54, 0.81);
+      }
+
+      .float-right{
+        color: #d2d2d2;
+        font-weight: bold;
+      }
+
+
+    }
+    .box-1{
+      @include boxStyle;
+      height: 470px;
+      background:
+              /* top, transparent red */
+              linear-gradient(to right,
+                      rgba(0, 0, 0, 0.88),
+                      rgba(0, 0, 0, 0.45)
+              ),
+                /* bottom, image */
+              url(../images/avantecture-0Vdrg5pR7NY-unsplash.jpg);
+      background-size: cover;
+
+      .text-bottom {
+        top:90%;
+      }
+    }
+
+    .box-2{
+      @include boxStyle;
+      background:
+              /* top, transparent red */
+              linear-gradient(
+                              rgba(0, 0, 0, 0.45),
+                              rgba(0, 0, 0, 0.45)
+              ),
+                /* bottom, image */
+              url(../images/timothy-buck-psrloDbaZc8-unsplash.jpg);
+      background-size: cover;
+
+
+    }
+
+    .box-3{
+      @include boxStyle;
+      background:
+              /* top, transparent red */
+              linear-gradient(
+                              rgba(0, 0, 0, 0.45),
+                              rgba(0, 0, 0, 0.45)
+              ),
+                /* bottom, image */
+              url(../images/ralph-kayden-JDBVXignFdA-unsplash.jpg);
+      background-size: cover;
+    }
+
+
+  }
+
+  &__carousel{
+    padding: 35px 0px 0px 0px;
+    background:
+            /* top, transparent red */
+            linear-gradient(
+                            rgba(0, 0, 0, 0.65),
+                            rgba(0, 0, 0, 0.65)
+            ),
+              /* bottom, image */
+            url(../images/jolene-hardy-uuApNXxgcRM-unsplash.jpg);
+    background-size: cover;
+    .fas{
+      color: #8a8a8a;
+      font-size: 8px;
+      padding: 3px;
+    }
+
+    .fas-white{
+
+      color: #f1f1f1;
+
+    }
+
+    .section{
+      margin: auto;
+      .content{
+        padding:30px 30px;
+        background-color: rgba(0,0,0,0.4);
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 10px;
+
+        h5{
+          font-size: 23px;
+          font-weight: 300;
+          font-style: italic;
+        }
+
+        h6{
+          color: rgba(241, 241, 241, 0.59);
+        }
+
+        .orange{
+          color: #c36e3e;
+        }
+      }
+    }
+
+  }
+
+  &__footer{
+    background-color: #ebebeb;
+    padding: 100px 0px 0px 0px;
+    .section{
+      margin:auto;
+
+      .content{
+        margin: 2px;
+
+        .heading{
+          color: #1b1b1b;
+          font-size: 13px;
+          font-weight: bolder;
+          padding: 10px 0px;
+
+        }
+        .item{
+          font-size: 13px;
+          line-height:0.8;
+          color: #acacac;
+          font-weight: bolder;
+        }
+        .fab{
+          color:#1b1b1b;
+          margin:15px;
+        }
+
+        .button{
+          background-color: #373737;
+
+        }
+
+        //.input-group-field{
+        //  color: #e2e2e2;
+        //}
+
+
+      }
+
+    }
+
+    p{
+      font-size: 12px;
+      color: #1b1b1b;
+    }
+  }
+}
